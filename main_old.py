@@ -3,8 +3,8 @@ import numpy as np
 import xgboost as xgb
 
 # Set API endpoint URL and API key
-url = 'https://api.the-odds-api.com/v4/sports/baseball_mlb/odds/?apiKey=8f283a0b9aa2f6e2b517c77b786bb1cb&bookmakers=fanduel&markets=h2h,spreads,totals&oddsFormat=american'
-api_key = '8f283a0b9aa2f6e2b517c77b786bb1cb'
+url = 'https://api.the-odds-api.com/v4/sports/baseball_mlb/odds/?apiKey=00ab27442da4a2b1f8460c5c70d0b3d8&bookmakers=fanduel&markets=h2h,spreads,totals&oddsFormat=american'
+api_key = '00ab27442da4a2b1f8460c5c70d0b3d8'
 # Set headers for the request
 headers = {
     'Content-Type': 'application/json',
