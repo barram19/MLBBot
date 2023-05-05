@@ -2,7 +2,7 @@ import requests
 import numpy as np
 import xgboost as xgb
 import pandas as pd
-
+from IPython.display import display
 
 # Set API endpoint URL and API key
 url = 'https://api.the-odds-api.com/v4/sports/baseball_mlb/odds/?apiKey=8f283a0b9aa2f6e2b517c77b786bb1cb&bookmakers=fanduel&markets=h2h,spreads,totals&oddsFormat=american'
