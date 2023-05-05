@@ -77,5 +77,3 @@ for i, game in enumerate(game_data):
         print(f"u{game[5]}")
     else:
         print(f"o{game[5]}")
-else:
-    print("Failed to retrieve odds data")
