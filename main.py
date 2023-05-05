@@ -1,6 +1,7 @@
 import requests
 import numpy as np
 import xgboost as xgb
+import pandas as pd
 
 
 # Set API endpoint URL and API key
@@ -60,6 +61,12 @@ new_data = X
 y_pred_win = model_win.predict(new_data)
 y_pred_total = model_total.predict(new_data)
 
+# Create lists to store the table data
+dates = []
+matchups = []
+win_predictions = []
+total_predictions = []
+
 # Output the predicted labels along with the matchup and date
 for i, game in enumerate(game_data):
     home_team = game[0]
@@ -68,12 +75,31 @@ for i, game in enumerate(game_data):
     win_prediction = y_pred_win[i]
     total_prediction = y_pred_total[i]
     if win_prediction == 0:
-        print(f"{date}: {away_team} vs {home_team}: {away_team} ML")
+        win_pred = away_team + ' ML'
     elif win_prediction == 1:
-        print(f"{date}: {away_team} vs {home_team}: {home_team} ML")
+        win_pred = home_team + ' ML'
     else:
-        print(f"{date}: {away_team} vs {home_team}: Draw")
+        win_pred = 'Draw'
     if total_prediction == 0:
-        print(f"u{game[5]}")
+        total_pred = 'u' + str(game[5])
     else:
-        print(f"o{game[5]}")
+        total_pred = 'o' + str(game[5])
+    
+    # Add the data to the lists
+    dates.append(date)
+    matchups.append(away_team + ' vs ' + home_team)
+    win_predictions.append(win_pred)
+    total_predictions.append(total_pred)
+
+# Create the table using pandas
+df = pd.DataFrame({
+    'Date': dates,
+    'Matchup': matchups,
+    'Predicted Winner': win_predictions,
+    'Predicted Total': total_predictions
+})
+# Set max column width to unlimited
+pd.set_option('display.max_colwidth', None)
+
+# Display the table in-line
+display(df)
